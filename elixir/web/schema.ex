@@ -9,6 +9,13 @@ defmodule Blog.Schema do
     field :posts, list_of(:post) do
       resolve &Resolver.Post.all/3
     end
+
+    field :post, :post do
+      arg :id, non_null(:id)
+
+      resolve &Resolver.Post.find/3
+    end
+
     field :user, :user do
       arg :id, non_null(:id)
 

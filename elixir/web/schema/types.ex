@@ -15,7 +15,7 @@ defmodule Blog.Schema.Types do
     field :id, :id
     field :title, :string
     field :body, :string
-    field :posted_at, :time
+    field :posted_at, :string
     field :author, :user
   end
 

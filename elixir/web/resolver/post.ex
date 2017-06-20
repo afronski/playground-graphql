@@ -16,7 +16,11 @@ defmodule Blog.Resolver.Post do
 
   def create(_parent, attributes, _info) do
     IO.inspect attributes
+    IO.inspect IEx.Info.info attributes
+
+    attributes = Map.put(attributes, :posted_at, Ecto.DateTime.to_string(Ecto.DateTime.utc()))
     changeset = Post.changeset(%Post{}, attributes)
+
     case Repo.insert(changeset) do
       {:ok, post} -> {:ok, post}
       {:error, changeset} -> {:error, changeset.errors}
